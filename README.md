@@ -1,9 +1,13 @@
 # MERN stack + Redis test project
 
-### To start run:
+### Frontend folder name:
 
-npm run dev
+client
 
 ### Swagger documentation route:
 
 /api-docs
+
+### To start run:
+
+npm run dev

@@ -1,0 +1,44 @@
+{
+    "name": "mern-course",
+    "version": "1.0.0",
+    "description": "MERN stack + Redis",
+    "main": "app.js",
+    "scripts": {
+        "start": "cross-env NODE_ENV=production node app.js",
+        "server": "nodemon app.js",
+        "client": "npm run start --prefix client",
+        "client:install": "npm install --prefix client",
+        "client:build": "npm run build --prefix client",
+        "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
+    },
+    "keywords": [
+        "mern",
+        "react"
+    ],
+    "author": "Eugeny Shelomyantsev <netmagnate@gmail.com>",
+    "license": "ISC",
+    "dependencies": {
+        "async-redis": "^1.1.7",
+        "async-redis-mock": "^1.0.0",
+        "bcrypt": "^5.0.0",
+        "config": "^3.3.3",
+        "cron": "^1.8.2",
+        "cross-env": "^7.0.3",
+        "express": "^4.17.1",
+        "express-async-errors": "^3.1.1",
+        "express-validator": "^6.9.2",
+        "jsonwebtoken": "^8.5.1",
+        "moment": "^2.29.1",
+        "mongoose": "^5.11.10",
+        "redis": "^3.0.2",
+        "shortid": "^2.2.16",
+        "swagger-jsdoc": "^6.0.1",
+        "swagger-ui-express": "^4.1.6",
+        "urlencode": "^1.1.0"
+    },
+    "devDependencies": {
+        "concurrently": "^5.3.0",
+        "eslint": "^7.17.0",
+        "nodemon": "^2.0.6"
+    }
+}

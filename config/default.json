@@ -1,0 +1,12 @@
+{
+    "port": 5000,
+    "jwtSecret": "sdf$324234",
+    "mongoUri": "mongodb+srv://eugeny:123$123@cluster0.kgsmk.mongodb.net/app?retryWrites=true&w=majority",
+    "baseUrl": "http://localhost:5000",
+    "redirectPrefix": "l",
+    "subpartMaxLength": 50,
+    "redisPort": 6379,
+    "redisHost": "127.0.0.1",
+    "linkCacheTimeoutSeconds": 86400,
+    "deleteLinkAfterDays": 30
+}

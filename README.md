@@ -1,4 +1,4 @@
-# MERN stack + Redis test project
+# MERN stack + Redis
 
 ### Frontend folder name:
 

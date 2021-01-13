@@ -8,11 +8,13 @@ client
 
 /api-docs
 
-### To install and start run:
+### To install run:
 
 git clone https://github.com/curtrade/mern-stack-redis; cd mern-stack-redis; npm
-install; cd client; npm install; cd ..; npm run dev
+install; cd client; npm install; cd ..
 
 ### To start run:
+
+### (Redis should be installed)
 
 npm run dev

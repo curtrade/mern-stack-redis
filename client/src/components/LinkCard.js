@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 /* eslint-disable react/prop-types */
 export const LinkCard = ({ link }) => {
@@ -22,6 +22,6 @@ export const LinkCard = ({ link }) => {
                 <strong>{new Date(link.date).toLocaleDateString()}</strong>
             </p>
         </div>
-    )
-}
+    );
+};
 /* eslint-enable react/prop-types */

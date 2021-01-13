@@ -1,15 +1,15 @@
-const { Router } = require('express')
-const config = require('config')
-const jwt = require('jsonwebtoken')
-const { body, validationResult } = require('express-validator')
-const User = require('../models/User')
-const auth = require('../middleware/auth.middleware')
-const urlencode = require('urlencode')
-const router = Router()
-const { BadRequest, NotFound } = require('../modules/error-types')
+const { Router } = require('express');
+const config = require('config');
+const jwt = require('jsonwebtoken');
+const { body, validationResult } = require('express-validator');
+const User = require('../models/User');
+const auth = require('../middleware/auth.middleware');
+const urlencode = require('urlencode');
+const router = Router();
+const { BadRequest, NotFound } = require('../modules/error-types');
 
 //instead of try...catch in every route
-require('express-async-errors')
+require('express-async-errors');
 
 // /api/user/register
 /**
@@ -33,20 +33,20 @@ router.post(
     body('action').custom((value) => {
         return value !== 'create-user'
             ? Promise.reject('Некорректное действие')
-            : Promise.resolve()
+            : Promise.resolve();
     }),
     async (req, res) => {
-        const errors = validationResult(req)
+        const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
             throw new BadRequest(errors.array()[0].msg, {
                 errors: errors.array()
-            })
+            });
         }
 
-        const user = new User()
+        const user = new User();
 
-        await user.save()
+        await user.save();
 
         // prettier-ignore
         const token = jwt.sign(
@@ -55,9 +55,9 @@ router.post(
           { expiresIn: '1h' }
         )
 
-        res.json({ token, userId: user.id })
+        res.json({ token, userId: user.id });
     }
-)
+);
 
 // /api/user/subpart
 /**
@@ -86,57 +86,57 @@ router.put(
         body('subpart', 'Subpart содержит недопустимые символы').custom(
             (subpart) => {
                 /* eslint-disable */
-                return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(subpart)
+                return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\":<>\?]/g.test(subpart);
                 /* eslint-enable */
             }
         ),
         body('subpart').customSanitizer((subpart) => {
-            return urlencode(subpart)
+            return urlencode(subpart);
         }),
         body('subpart', 'Subpart не может быть слишком длинным').custom(
             (subpart) => {
-                return subpart.length <= config.get('subpartMaxLength')
+                return subpart.length <= config.get('subpartMaxLength');
             }
         )
     ],
     async (req, res) => {
-        const { subpart } = req.body
+        const { subpart } = req.body;
 
-        const errors = validationResult(req)
+        const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
             throw new BadRequest(errors.array()[0].msg, {
                 errors: errors.array()
-            })
+            });
         }
 
         if (!subpart && subpart !== '') {
-            throw new BadRequest('Не задан subpart')
+            throw new BadRequest('Не задан subpart');
         }
 
-        const user = await User.findById(req.user.userId)
+        const user = await User.findById(req.user.userId);
 
         if (!user) {
-            throw new NotFound('Пользователь не найден')
+            throw new NotFound('Пользователь не найден');
         }
 
         if (user.subpart === subpart) {
-            throw new BadRequest('Вы уже сохранили этот subpart')
+            throw new BadRequest('Вы уже сохранили этот subpart');
         }
 
         const subpartCount = await User.countDocuments({
             subpart
-        })
+        });
 
         if (subpartCount > 0) {
-            throw new BadRequest('Subpart занят другим пользователем ')
+            throw new BadRequest('Subpart занят другим пользователем ');
         }
 
-        user.subpart = subpart
-        await user.save()
+        user.subpart = subpart;
+        await user.save();
 
-        res.json({ message: 'Subpart сохранен count' })
+        res.json({ message: 'Subpart сохранен count' });
     }
-)
+);
 
-module.exports = router
+module.exports = router;

@@ -1,17 +1,17 @@
-'use strict'
+'use strict';
 
 class ExtraError extends Error {
     constructor(message, params) {
-        super(message)
+        super(message);
         if (params && typeof params === 'object') {
-            this._params = params
+            this._params = params;
         } else {
-            this._params = {}
+            this._params = {};
         }
     }
     getParams() {
-        return this._params
+        return this._params;
     }
 }
 
-module.exports = ExtraError
+module.exports = ExtraError;

@@ -1,16 +1,16 @@
-const config = require('config')
-let redis = require('async-redis')
-const CustomLogger = require('./modules/custom-logger')
+const config = require('config');
+const redis = require('async-redis');
+const CustomLogger = require('./modules/custom-logger');
 
-const logger = new CustomLogger('redis-env.js')
+const logger = new CustomLogger('redis-env.js');
 
-const port = config.get('redisPort')
-const host = config.get('redisHost')
+const port = config.get('redisPort');
+const host = config.get('redisHost');
 
-const client = redis.createClient(port, host)
+const client = redis.createClient(port, host);
 
 client.on('error', function (error) {
-    logger.error('error', error)
-})
+    logger.error('error', error);
+});
 
-module.exports = client
+module.exports = client;

@@ -1,4 +1,4 @@
-import { createContext } from 'react'
+import { createContext } from 'react';
 
 function noop() {}
 
@@ -9,4 +9,4 @@ export const SessionContext = createContext({
     init: noop,
     clear: noop,
     isAlive: false
-})
+});

@@ -1,11 +1,11 @@
-'use strict'
-const ApiError = require('./api-error')
+'use strict';
+const ApiError = require('./api-error');
 
 class NotFound extends ApiError {
     constructor(...args) {
-        super(...args)
-        this._code = 404
+        super(...args);
+        this._code = 404;
     }
 }
 
-module.exports = NotFound
+module.exports = NotFound;

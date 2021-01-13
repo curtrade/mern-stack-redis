@@ -1,16 +1,16 @@
-import React, { useContext } from 'react'
-import { NavLink, useHistory } from 'react-router-dom'
-import { SessionContext } from '../context/SessionContext'
+import React, { useContext } from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
+import { SessionContext } from '../context/SessionContext';
 
 export const Navbar = () => {
-    const history = useHistory()
-    const session = useContext(SessionContext)
+    const history = useHistory();
+    const session = useContext(SessionContext);
 
     const logoutHandler = (event) => {
-        event.preventDefault()
-        session.clear()
-        history.push('/')
-    }
+        event.preventDefault();
+        session.clear();
+        history.push('/');
+    };
 
     return (
         <nav>
@@ -39,5 +39,5 @@ export const Navbar = () => {
                 </ul>
             </div>
         </nav>
-    )
-}
+    );
+};

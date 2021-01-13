@@ -1,11 +1,11 @@
-'use strict'
-const ApiError = require('./api-error')
+'use strict';
+const ApiError = require('./api-error');
 
 class BadRequest extends ApiError {
     constructor(...args) {
-        super(...args)
-        this._code = 400
+        super(...args);
+        this._code = 400;
     }
 }
 
-module.exports = BadRequest
+module.exports = BadRequest;

@@ -1,12 +1,12 @@
-const config = require('config')
-const { Router } = require('express')
-const Link = require('../models/Link')
-const redis = require('../redis-env')
-const router = Router()
-const { NotFound, BadRequest } = require('../modules/error-types')
+const config = require('config');
+const { Router } = require('express');
+const Link = require('../models/Link');
+const redis = require('../redis-env');
+const router = Router();
+const { NotFound, BadRequest } = require('../modules/error-types');
 
 //instead of try...catch in every route
-require('express-async-errors')
+require('express-async-errors');
 
 /**
  * @swagger
@@ -25,18 +25,18 @@ require('express-async-errors')
  *     description: Link not found
  */
 router.get('/:code', async (req, res) => {
-    const code = req.params.code
+    const code = req.params.code;
     if (!code) {
-        throw new BadRequest()
+        throw new BadRequest();
     }
 
-    const sourceLink = await redis.get(code)
+    const sourceLink = await redis.get(code);
 
     if (sourceLink) {
-        return res.redirect(sourceLink)
+        return res.redirect(sourceLink);
     }
 
-    const link = await Link.findOne({ code })
+    const link = await Link.findOne({ code });
 
     if (link) {
         await redis.set(
@@ -44,11 +44,11 @@ router.get('/:code', async (req, res) => {
             link.from,
             'EX',
             config.get('linkCacheTimeoutSeconds')
-        )
-        return res.redirect(link.from)
+        );
+        return res.redirect(link.from);
     }
 
-    throw new NotFound('Ссылка не найдена')
-})
+    throw new NotFound('Ссылка не найдена');
+});
 
-module.exports = router
+module.exports = router;

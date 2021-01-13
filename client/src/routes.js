@@ -1,10 +1,10 @@
-import React from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
-import { InitPage } from './pages/InitPage'
-import { LinksPage } from './pages/LinksPage'
-import { CreatePage } from './pages/CreatePage'
-import { DetailPage } from './pages/DetailPage'
-import { SettingsPage } from './pages/SettingsPage'
+import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { InitPage } from './pages/InitPage';
+import { LinksPage } from './pages/LinksPage';
+import { CreatePage } from './pages/CreatePage';
+import { DetailPage } from './pages/DetailPage';
+import { SettingsPage } from './pages/SettingsPage';
 
 export const useRoutes = (isAuthenticated) => {
     if (isAuthenticated) {
@@ -24,7 +24,7 @@ export const useRoutes = (isAuthenticated) => {
                 </Route>
                 <Redirect to="/create" />
             </Switch>
-        )
+        );
     }
 
     return (
@@ -34,5 +34,5 @@ export const useRoutes = (isAuthenticated) => {
             </Route>
             <Redirect to="/" />
         </Switch>
-    )
-}
+    );
+};

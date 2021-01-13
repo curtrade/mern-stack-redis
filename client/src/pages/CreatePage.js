@@ -1,19 +1,19 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { useHttp } from '../hooks/http.hook'
-import { SessionContext } from '../context/SessionContext'
-import { useHistory } from 'react-router-dom'
-import { useMessage } from '../hooks/message.hook'
+import React, { useState, useEffect, useContext } from 'react';
+import { useHttp } from '../hooks/http.hook';
+import { SessionContext } from '../context/SessionContext';
+import { useHistory } from 'react-router-dom';
+import { useMessage } from '../hooks/message.hook';
 
 export const CreatePage = () => {
-    const message = useMessage()
-    const history = useHistory()
-    const { token } = useContext(SessionContext)
-    const { request } = useHttp()
-    const [link, setLink] = useState('')
+    const message = useMessage();
+    const history = useHistory();
+    const { token } = useContext(SessionContext);
+    const { request } = useHttp();
+    const [link, setLink] = useState('');
 
     useEffect(() => {
-        window.M.updateTextFields()
-    }, [])
+        window.M.updateTextFields();
+    }, []);
 
     const pressHandler = async (event) => {
         if (event.key === 'Enter') {
@@ -25,13 +25,13 @@ export const CreatePage = () => {
                         from: link
                     },
                     { Authorization: `Bearer ${token}` }
-                )
-                history.push(`/detail/${data.link._id}`)
+                );
+                history.push(`/detail/${data.link._id}`);
             } catch (e) {
-                message(e.message)
+                message(e.message);
             }
         }
-    }
+    };
 
     return (
         <div className="row">
@@ -51,5 +51,5 @@ export const CreatePage = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

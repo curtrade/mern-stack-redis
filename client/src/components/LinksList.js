@@ -1,10 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 /* eslint-disable react/prop-types */
 export const LinksList = ({ links }) => {
     if (!links.length) {
-        return <p className="center">Ссылок пока нет</p>
+        return <p className="center">Ссылок пока нет</p>;
     }
 
     return (
@@ -28,10 +28,10 @@ export const LinksList = ({ links }) => {
                                 <Link to={`/detail/${_id}`}>Открыть</Link>
                             </td>
                         </tr>
-                    )
+                    );
                 })}
             </tbody>
         </table>
-    )
-}
+    );
+};
 /* eslint-enable react/prop-types */

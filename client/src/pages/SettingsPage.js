@@ -1,17 +1,17 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { useHttp } from '../hooks/http.hook'
-import { SessionContext } from '../context/SessionContext'
-import { useMessage } from '../hooks/message.hook'
+import React, { useState, useEffect, useContext } from 'react';
+import { useHttp } from '../hooks/http.hook';
+import { SessionContext } from '../context/SessionContext';
+import { useMessage } from '../hooks/message.hook';
 
 export const SettingsPage = () => {
-    const { token } = useContext(SessionContext)
-    const message = useMessage()
-    const { request } = useHttp()
-    const [subpart, setSubpart] = useState('')
+    const { token } = useContext(SessionContext);
+    const message = useMessage();
+    const { request } = useHttp();
+    const [subpart, setSubpart] = useState('');
 
     useEffect(() => {
-        window.M.updateTextFields()
-    }, [])
+        window.M.updateTextFields();
+    }, []);
 
     const pressHandler = async (event) => {
         if (event.key === 'Enter') {
@@ -21,13 +21,13 @@ export const SettingsPage = () => {
                     'PUT',
                     { action: 'update', subpart },
                     { Authorization: `Bearer ${token}` }
-                )
-                message('Subpart сохранен')
+                );
+                message('Subpart сохранен');
             } catch (e) {
-                message(e.message)
+                message(e.message);
             }
         }
-    }
+    };
 
     return (
         <div className="row">
@@ -47,5 +47,5 @@ export const SettingsPage = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

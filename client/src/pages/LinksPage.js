@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, Fragment, useContext } from 'r
 import { useHttp } from '../hooks/http.hook';
 import { SessionContext } from '../context/SessionContext';
 import { Loader } from '../components/Loader';
-import { PaginatedLinksList } from '../components/PaginatedLinksList';
+import { LinksList } from '../components/LinksList';
 import { useMessage } from '../hooks/message.hook';
 
 export const LinksPage = () => {
@@ -30,5 +30,5 @@ export const LinksPage = () => {
         return <Loader />;
     }
 
-    return <Fragment>{links && <PaginatedLinksList links={links} />}</Fragment>;
+    return <Fragment>{links && <LinksList links={links} />}</Fragment>;
 };

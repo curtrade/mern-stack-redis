@@ -57,19 +57,23 @@ localRoutes.post(
  *    404:
  *     description: User not found
  */
-localRoutes.put('/subpart', [
-    auth,
-    body('subpart', 'Subpart содержит недопустимые символы').custom((subpart) => {
-        /* eslint-disable */
-        return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\':<>\?]/g.test(subpart);
-        /* eslint-enable */
-    }),
-    body('subpart').customSanitizer((subpart) => {
-        return urlencode(subpart);
-    }),
-    body('subpart', 'Subpart не может быть слишком длинным').custom((subpart) => {
-        return subpart.length <= config.get('subpartMaxLength');
-    })
-]);
+localRoutes.put(
+    '/subpart',
+    [
+        auth,
+        body('subpart', 'Subpart содержит недопустимые символы').custom((subpart) => {
+            /* eslint-disable */
+            return !/[~`!#$%\^&*+=\-\[\]\\';,/{}|\\':<>\?]/g.test(subpart);
+            /* eslint-enable */
+        }),
+        body('subpart').customSanitizer((subpart) => {
+            return urlencode(subpart);
+        }),
+        body('subpart', 'Subpart не может быть слишком длинным').custom((subpart) => {
+            return subpart.length <= config.get('subpartMaxLength');
+        })
+    ],
+    require('./update-subpart')
+);
 
 module.exports = localRoutes;

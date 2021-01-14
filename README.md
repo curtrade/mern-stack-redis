@@ -18,7 +18,7 @@ git clone https://github.com/curtrade/mern-stack-redis; cd mern-stack-redis; npm
 
 npm run dev
 
-### To install run:
+### To install + start run:
 
 #### (Redis should be installed)
 

@@ -9,18 +9,9 @@ class CustomLogger {
 
     _printMessage(messageType, message, object) {
         if (object) {
-            console.log(
-                `[${this._getTimeStamp()}][${messageType}][${
-                    this.namespace
-                }] ${message}`,
-                object
-            );
+            console.log(`[${this._getTimeStamp()}][${messageType}][${this.namespace}] ${message}`, object);
         } else {
-            console.log(
-                `[${this._getTimeStamp()}][${messageType}][${
-                    this.namespace
-                }] ${message}`
-            );
+            console.log(`[${this._getTimeStamp()}][${messageType}][${this.namespace}] ${message}`);
         }
     }
 

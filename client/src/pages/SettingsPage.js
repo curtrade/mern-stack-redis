@@ -16,12 +16,7 @@ export const SettingsPage = () => {
     const pressHandler = async (event) => {
         if (event.key === 'Enter') {
             try {
-                await request(
-                    '/api/user/subpart',
-                    'PUT',
-                    { action: 'update', subpart },
-                    { Authorization: `Bearer ${token}` }
-                );
+                await request('/api/user/subpart', 'PUT', { action: 'update', subpart }, { Authorization: `Bearer ${token}` });
                 message('Subpart сохранен');
             } catch (e) {
                 message(e.message);
@@ -33,17 +28,8 @@ export const SettingsPage = () => {
         <div className="row">
             <div className="col.s8.offset-s2" style={{ paddingTop: '2rem' }}>
                 <div className="input-field">
-                    <input
-                        placeholder="Введите subpart"
-                        id="subpart"
-                        type="text"
-                        value={subpart}
-                        onChange={(e) => setSubpart(e.target.value)}
-                        onKeyPress={pressHandler}
-                    />
-                    <label htmlFor="subpart">
-                        Введите subpart и нажмите Enter
-                    </label>
+                    <input placeholder="Введите subpart" id="subpart" type="text" value={subpart} onChange={(e) => setSubpart(e.target.value)} onKeyPress={pressHandler} />
+                    <label htmlFor="subpart">Введите subpart и нажмите Enter</label>
                 </div>
             </div>
         </div>

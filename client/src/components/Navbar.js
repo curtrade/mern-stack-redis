@@ -14,10 +14,7 @@ export const Navbar = () => {
 
     return (
         <nav>
-            <div
-                className="nav-wrapper blue darken-1"
-                style={{ padding: '0 2rem' }}
-            >
+            <div className="nav-wrapper blue darken-1" style={{ padding: '0 2rem' }}>
                 <a href="#" className="brand-logo">
                     Сокращение ссылок
                 </a>

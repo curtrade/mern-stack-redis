@@ -10,9 +10,9 @@ const swaggerOptions = {
             contact: { name: 'Eugeny Shelomyantsev' },
             servers: ['http://localhost:5000']
         },
-        basePath: '/api/'
+        basePath: ''
     },
-    apis: ['./routes/*.js']
+    apis: ['./routes/**/index.js']
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);

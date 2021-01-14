@@ -18,8 +18,7 @@ export const LinkCard = ({ link }) => {
                 </a>
             </p>
             <p>
-                Дата создания:{' '}
-                <strong>{new Date(link.date).toLocaleDateString()}</strong>
+                Дата создания: <strong>{new Date(link.date).toLocaleDateString()}</strong>
             </p>
         </div>
     );

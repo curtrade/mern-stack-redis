@@ -1,10 +1,4 @@
-import React, {
-    useState,
-    useCallback,
-    useContext,
-    useEffect,
-    Fragment
-} from 'react';
+import React, { useState, useCallback, useContext, useEffect, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 import { useHttp } from '../hooks/http.hook';
 import { SessionContext } from '../context/SessionContext';
